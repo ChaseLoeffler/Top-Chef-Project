@@ -243,7 +243,9 @@ function generateMarketingMessage(dishOfTheDay, messageTypeCallback) {
     alert('Sending final message to all 389 customers...')
     // TODO #7: Call the passed-in callback function on the dishOfTheDay.  Save the result as a variable
     // Then, log that result to the console
+    let message = messageTypeCallback(dishOfTheDay)
     alert('Success!  Check the console for a copy of the final marketing message!')
+    return message;
 }
 
 // <<<<<<<<<<<<<<<<< CUSTOM PROMPT FUNCTION <<<<<<<<<<<<<<<<<
@@ -293,13 +295,13 @@ function runApp(allDishes, specialDish) {
         case "6":
             // TODO #8: Call the appropriate function to generate the marketing text message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!
-            let tMessage = textMessage(specialDish)
+            let tMessage = generateMarketingMessage(specialDish,textMessage)
             console.log(tMessage)
             break
         case "7":
             // TODO #9: Call the appropriate function to generate the marketing email message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!
-            let eMessage = emailMessage(specialDish)
+            let eMessage = generateMarketingMessage(specialDish,emailMessage)
             console.log(eMessage)
             break
         case "Exit":
